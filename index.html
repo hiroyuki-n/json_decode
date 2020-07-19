@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jsonの整形ツール</title>
+	<style>
+		textarea {
+			width: 700px;
+			height: 400px;
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<form>
+		<input id="decode" type="button" value="整形する"> <input id="reset" type="button" value="リセット">
+		<div id="result"></div>
+		<textarea
+			id="textarea">{"ja":"jsonの整形ツール","en":"json formatting tool","comment":{"ja":"頑張って作りました！","en":"I made it hard"}}</textarea>
+	</form>
+	<script>
+		const result_txt = document.getElementById('result');
+		const json_txt = document.getElementById('textarea');
+		function decode() {
+			if ('' != json_txt.value) try {
+				const parse = JSON.parse(json_txt.value);
+				const stringify = JSON.stringify(parse, null, 2);
+				json_txt.value = stringify, result_txt.textContent = '整形しました';
+			} catch {
+				result_txt.textContent = '整形出来ませんでした';
+			}
+		};
+		function reset() {
+			result_txt.textContent = '';
+			json_txt.value = '';
+		}
+		document.getElementById('decode').onclick = function () { decode(); };
+		document.getElementById('reset').onclick = function () { reset(); };
+	</script>
+</body>
+
+</html>
