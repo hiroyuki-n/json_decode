@@ -3,47 +3,27 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>jsonの整形ツール</title>
-	<style>
-		body {
-			padding: 20px;
-		}
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&display=swap"
+		rel="stylesheet">
+	<title>JSONの整形ツール</title>
+	<link rel="stylesheet" href="css/style.css">
 
-		textarea {
-			width: 700px;
-			height: 400px;
-			padding: 10px;
-		}
-	</style>
 </head>
 
 <body>
-	<h1>jsonの整形ツール</h1>
-	<form>
-		<input id="decode" type="button" value="整形"> <input id="reset" type="button" value="リセット">
-		<div id="result"></div>
+	<main>
+		<h1>JSONの整形ツール</h1>
 		<textarea
 			id="textarea">{"ja":"jsonの整形ツール","en":"json formatting tool","comment":{"ja":"頑張って作りました！","en":"I made it hard"}}</textarea>
-	</form>
-	<script>
-		const result_txt = document.getElementById('result');
-		const json_txt = document.getElementById('textarea');
-		function decode() {
-			if ('' != json_txt.value) try {
-				const parse = JSON.parse(json_txt.value);
-				const stringify = JSON.stringify(parse, null, 2);
-				json_txt.value = stringify, result_txt.textContent = '整形しました';
-			} catch {
-				result_txt.textContent = '整形出来ませんでした';
-			}
-		};
-		function reset() {
-			result_txt.textContent = '';
-			json_txt.value = '';
-		}
-		document.getElementById('decode').onclick = function () { decode(); };
-		document.getElementById('reset').onclick = function () { reset(); };
-	</script>
+		<div class="btn">
+			<input id="decode" type="button" value="整形">
+			<input id="reset" type="button" value="リセット">
+		</div>
+		<div id="result"></div>
+	</main>
+	<script src="js/style.js"></script>
 </body>
 
 </html>
